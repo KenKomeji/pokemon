@@ -13,7 +13,18 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    /*
+    script: [
+      {src: '/__/firebase/6.6.0/firebase-app.js'},
+      {src: '/__/firebase/6.6.0/firebase-auth.js'},
+      {src: '/__/firebase/6.6.0/firebase-database.js'},
+      {src: '/__/firebase/6.6.0/firebase-messaging.js'},
+      {src: '/__/firebase/6.6.0/firebase-storage.js'},
+      {src: '/__/firebase/6.6.0/firebase-firestore.js'},
+      {src: '/__/firebase/6.6.0/firebase-init.js'},
     ]
+    */
   },
   /*
   ** Customize the progress-bar color
@@ -28,6 +39,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/RouterOption' },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,6 +52,8 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
+    '@nuxtjs/font-awesome',
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Build configuration
@@ -58,4 +72,10 @@ export default {
     extend (config, ctx) {
     }
   }
+}
+
+module.exports = {
+  router: {
+    middleware: 'logincheck'
+  }  
 }

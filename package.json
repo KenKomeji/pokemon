@@ -11,8 +11,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "@nuxtjs/bulma": "^1.2.1",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/font-awesome": "^1.0.4",
+    "firebase": "^6.6.0",
     "nuxt": "^2.0.0",
-    "@nuxtjs/bulma": "^1.2.1"
-  },
-  "devDependencies": {}
+    "std-env": "^2.2.1"
+  }
 }
