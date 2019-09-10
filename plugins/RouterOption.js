@@ -8,9 +8,8 @@ export default async ({ app,store }) => {
         
         const firebase = require('firebase/app');
         require('firebase/auth');
-
+        console.log(page_name)
         firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.displayName);
             if(!user){
                 store.commit('user_info/logout');
                 switch(page_name){
@@ -18,9 +17,9 @@ export default async ({ app,store }) => {
                         console.log("index page。");
                         break;
                     default :
+                        console.log("index page1");
                         var provider = new firebase.auth.GoogleAuthProvider();
-                        firebase.auth().signInWithRedirect(provider);
-
+                        //firebase.auth().signInWithRedirect(provider);
                         break;
                 }
             }
@@ -29,8 +28,5 @@ export default async ({ app,store }) => {
                 store.commit('user_info/login', user.displayName);
             }
         });
-
-        
-    
     });
 };
