@@ -1,11 +1,13 @@
 export const state = () => ({
     user: "",
+    uid: "",
     isSignedIn: false
   });
 
 export const mutations = {
-    login(state, user) {
+    login(state, user, uid) {
         state.user = user;
+        state.uid = uid;
         state.isSignedIn = true;
     },
     logout(state) {

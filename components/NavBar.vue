@@ -8,28 +8,49 @@
                 <span></span>
                 <span></span>
                 <span></span>
-             </div>
+            </div>
         </div>
         <div id="navbarExampleTransparentExample" class="navbar-menu" :class="{'is-active':showNav}">
-            <div class="navbar-end">
-                <nuxt-link class="navbar-item" to="/">
-                   HOME
-                </nuxt-link>
-                <div class="navbar-item has-dropdown is-hoverable">
-                   <div class="navbar-dropdown is-boxed">
-                       <nuxt-link v-for="item in items" :key="item.title" :to="item.url" class="navbar-item">
-                           {{ item.title }}
-                       </nuxt-link>
-                   </div>
+            <div class="navbar-start">
+                <div class="navbar-item">
+                    <nuxt-link to="/" class="navbar-item">
+                        Home
+                    </nuxt-link>
                 </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        POKEMON
+                    </a>
+                    <div class="navbar-dropdown">
+                        <div class="navbar-dropdown is-boxed">
+                            <nuxt-link v-for="item in item_pokemon" :key="item.title" :to="item.url" class="navbar-item">
+                                {{ item.title }}
+                            </nuxt-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        MORE
+                    </a>
+                    <div class="navbar-dropdown">
+                        <div class="navbar-dropdown is-boxed">
+                            <nuxt-link v-for="item in items" :key="item.title" :to="item.url" class="navbar-item">
+                                {{ item.title }}
+                            </nuxt-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
                 <div v-if="isSignIn" class="navbar-item">
                     <p class="control">
-                        <a class="button is-primary" href="/userpage">
+                        <nuxt-link class="button is-primary" to="/userpage">
                             <span class="icon">
                                 <i class="fa fa-user"></i>
                             </span>
                             <span>{{ username_display }}</span>
-                        </a>
+                        </nuxt-link>
                     </p>
                 </div>
                 <div v-else class="navbar-item">
@@ -64,6 +85,11 @@
             showNav: false,
             items: [
                 { title: 'Home', icon: 'home', url: '/' },
+                { title: 'pokemon', icon: 'home', url: '/pokemon'},
+            ],
+            item_pokemon: [
+                { title: 'TOP', icon: 'top', url: '/pokemon'},
+                { title: 'TeamBuilder', icon: 'TeamBuilder', url: '/pokemon/TeamBuilder'}
             ]
         }),
         methods: {
@@ -73,18 +99,6 @@
                 var provider = new firebase.auth.GoogleAuthProvider();
                 firebase.auth().signInWithRedirect(provider);
             },
-            logout() {
-                const firebase = require('firebase/app');
-                require('firebase/auth');
-                firebase.auth().signOut().then(()=>{
-                    this.$store.commit('user_info/logout');
-                })
-                .catch( (error)=>{
-                    console.log('logout error (${error})');
-                    location.href("/loginerror");
-                });
-                
-            }
         }
    }
 </script>

@@ -15,8 +15,10 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/font-awesome": "^1.0.4",
+    "bulma-extensions": "^6.2.7",
     "firebase": "^6.6.0",
     "nuxt": "^2.0.0",
+    "pokedex-promise-v2": "^3.2.0",
     "std-env": "^2.2.1"
   }
 }

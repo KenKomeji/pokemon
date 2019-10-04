@@ -14,17 +14,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    /*
     script: [
-      {src: '/__/firebase/6.6.0/firebase-app.js'},
-      {src: '/__/firebase/6.6.0/firebase-auth.js'},
-      {src: '/__/firebase/6.6.0/firebase-database.js'},
-      {src: '/__/firebase/6.6.0/firebase-messaging.js'},
-      {src: '/__/firebase/6.6.0/firebase-storage.js'},
-      {src: '/__/firebase/6.6.0/firebase-firestore.js'},
-      {src: '/__/firebase/6.6.0/firebase-init.js'},
+      //'bulma-extensions/bulma-slider/dist/js/bulma-slider.min.js'
     ]
-    */
   },
   /*
   ** Customize the progress-bar color
@@ -34,6 +26,7 @@ export default {
   ** Global CSS
   */
   css: [
+      //'node_modules/bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css',
   ],
   /*
   ** Plugins to load before mounting the App
