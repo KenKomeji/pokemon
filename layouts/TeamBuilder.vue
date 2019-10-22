@@ -18,8 +18,8 @@
 
    export default {
        components: {
-           FooterBar,
-           NavBar,
+          FooterBar,
+          NavBar,
           TeamBuilderSidebar
        }
    }
