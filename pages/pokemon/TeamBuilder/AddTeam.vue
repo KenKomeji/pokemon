@@ -174,24 +174,72 @@
                   <div class="column">
                     <div class="field">
                       <label class="label">Move</label>
-                      <div class="control">
-                        <input class="input" type="text" :value="'icicle-spear'" />
+                      <div class="select">
+                        <select
+                          :value="pokemon.move1"
+                          @change="Changemove(
+                            {SPN:selected_party_num,
+                            pokeidx:pokemon.index,
+                            move:$event.target.value,
+                            target:'move1'})"
+                        >
+                          <option disabled value>Please select move</option>
+                          <option v-for="move of pokemon.move_list" :key="move.name">
+                            {{move.name}}
+                          </option>
+                        </select>
                       </div>
-                      <div class="control">
-                        <input class="input" type="text" :value="'earthquake'" />
+                      <div class="select">
+                        <select
+                          :value="pokemon.move2"
+                          @change="Changemove(
+                            {SPN:selected_party_num,
+                            pokeidx:pokemon.index,
+                            move:$event.target.value,
+                            target:'move2'})"
+                        >
+                          <option disabled value>Please select move</option>
+                          <option v-for="move of pokemon.move_list" :key="move.name">
+                            {{move.name}}
+                          </option>
+                        </select>
                       </div>
-                      <div class="control">
-                        <input class="input" type="text" :value="'superpower'" />
+                      <div class="select">
+                        <select
+                          :value="pokemon.move3"
+                          @change="Changemove(
+                            {SPN:selected_party_num,
+                            pokeidx:pokemon.index,
+                            move:$event.target.value,
+                            target:'move3'})"
+                        >
+                          <option disabled value>Please select move</option>
+                          <option v-for="move of pokemon.move_list" :key="move.name">
+                            {{move.name}}
+                          </option>
+                        </select>
                       </div>
-                      <div class="control">
-                        <input class="input" type="text" :value="'icicle Crash'" />
+                      <div class="select">
+                        <select
+                          :value="pokemon.move4"
+                          @change="Changemove(
+                            {SPN:selected_party_num,
+                            pokeidx:pokemon.index,
+                            move:$event.target.value,
+                            target:'move4'})"
+                        >
+                          <option disabled value>Please select move</option>
+                          <option v-for="move of pokemon.move_list" :key="move.name">
+                            {{move.name}}
+                          </option>
+                        </select>
                       </div>
                     </div>
                   </div>
                   <div class="column">
                     <div class="field">
                       <label class="label">Stat&Ev</label>
-                      <table class="table is-hoverable">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th></th>
@@ -380,13 +428,15 @@ export default {
       "ChangeIv",
       "DeletePokemon",
       "SetPokemon",
-      "ChangeAbility"
+      "ChangeAbility",
+      "Changemove"
     ]),
     ...mapGetters("pokedata",[
       "getAllPokemon",
       "getSortData"
     ]),
-    ...mapActions("pokedata",[
+    ...mapActions("AddingTeams",[
+      "SetPokemonData"
     ]),
     SortData ( data , sortkey) {
       data.sort( function (poke1, poke2) {
@@ -453,7 +503,7 @@ export default {
     setPokemon( name, selected_party_num,pokeindex){
       var alldata = this.getAllPokemon()
       var targetpoke = alldata.find(poke => poke.name == name)
-      this.SetPokemon({Data:targetpoke,SPN:selected_party_num,IDX:pokeindex})
+      this.SetPokemonData({Data:targetpoke,SPN:selected_party_num,IDX:pokeindex})
       this.reflesh_selected_pokemon()
 
     },
